@@ -12,7 +12,7 @@ language:
 timezone: ''
 
 # URL
-url: http://example.com
+url: http://dreaming12.github.io
 permalink: :title/
 permalink_defaults:
 pretty_urls:
@@ -100,7 +100,9 @@ theme: book
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/dreaming12/dreaming12.github.io
+  branch: gh-pages
 
 ################################################################################
 
