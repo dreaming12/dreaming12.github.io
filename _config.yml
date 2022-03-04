@@ -102,7 +102,7 @@ theme: book
 deploy:
   type: git
   repo: https://github.com/dreaming12/dreaming12.github.io
-  branch: gh-pages
+  branch: main
 
 ################################################################################
 

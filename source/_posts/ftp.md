@@ -1,8 +1,8 @@
 ---
 title: FTP
 date: 2022-03-04 14:14:34
-tags:
-Linux
+categories:
+- Linux
 ---
 
 hexo-server
