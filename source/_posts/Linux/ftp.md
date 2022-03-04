@@ -1,8 +1,10 @@
 ---
 title: ftp
-date: 2022-03-04 15:24:59
+date: 2022-03-04
 tags:
 ---
+
+# FTP
 
 hexo-server
 

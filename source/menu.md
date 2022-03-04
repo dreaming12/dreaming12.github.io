@@ -1,5 +1,9 @@
-# MENU
+## [HOME](/)
 
 ## Linux
 
-- [FTP](/ftp)
+- [FTP](/Linux/ftp)
+
+## Hexo
+
+- [搭建教程](/Hexo/setup)
