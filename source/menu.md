@@ -2,4 +2,4 @@
 
 ## Linux
 
-- [FTP](/blog/ftp)
+- [FTP](/ftp)
