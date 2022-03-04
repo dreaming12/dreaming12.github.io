@@ -58,10 +58,14 @@ document.addEventListener('DOMContentLoaded', function () {
   </a>
 </div>
     <div id="menu" class="book-menu hide">
-  <h1 id="MENU">MENU</h1>
+  <h2 id="HOME"><a href="/">HOME</a></h2>
 <h2 id="Linux">Linux</h2>
 <ul>
-<li><a href="/ftp">FTP</a></li>
+<li><a href="/Linux/ftp">FTP</a></li>
+</ul>
+<h2 id="Hexo">Hexo</h2>
+<ul>
+<li><a href="/Hexo/setup">搭建教程</a></li>
 </ul>
 
 </div>
@@ -120,7 +124,8 @@ function sidebar_toggle() {
         </div>
         <div class="book-content">
           <div class="book-post">
-  <p>hexo-server</p>
+  <h1 id="FTP">FTP</h1>
+<p>hexo-server</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$ </span><span class="language-bash">npm install hexo-server --save</span></span><br></pre></td></tr></table></figure>
 <p>When the server is running, Hexo will watch for file changes and update automatically so it’s not necessary to manually restart the server.</p>
 
