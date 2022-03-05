@@ -11,7 +11,7 @@
 
     <title>
         
-          搭建教程 - Fancy&#39;s
+          setup - Fancy&#39;s
         
     </title>
 
@@ -124,12 +124,20 @@ function sidebar_toggle() {
         </div>
         <div class="book-content">
           <div class="book-post">
-  <h1 id="搭建教程">搭建教程</h1>
-<ol>
-<li>xxx</li>
-<li>xxx</li>
-<li>xxx</li>
-</ol>
+  <h1 id="搭建说明">搭建说明</h1>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a> ~ <a target="_blank" rel="noopener" href="https://hexo.io/docs/">Docs</a></p>
+</blockquote>
+<p>注意修改网址永久链接格式为 <code>:title/</code>，方便使用</p>
+<p>安装 <code>hexo-server</code>。服务器启动后，它就能根据文件变动自动更新，不需要重启服务器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$ </span><span class="language-bash">npm install hexo-server --save</span></span><br></pre></td></tr></table></figure>
+<h2 id="GitHub-Pages">GitHub Pages</h2>
+<p>安装 <code>hexo-deployer-git</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$ </span><span class="language-bash">npm install hexo-deployer-git --save</span></span><br></pre></td></tr></table></figure>
+<p>在 <code>_config.yml</code> 中添加配置：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">    <span class="attr">repo:</span> <span class="string">https://github.com/&lt;username&gt;/&lt;project-name&gt;</span></span><br><span class="line">    <span class="attr">branch:</span> <span class="string">gh-pages</span></span><br></pre></td></tr></table></figure>
+<p>GitHub Pages 默认从 <code>mian</code> 分支构建，需要在 <code>Settings</code> 中修改为 <code>gh-pages</code> 分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$ </span><span class="language-bash">hexo clean</span></span><br><span class="line"><span class="meta">$ </span><span class="language-bash">hexo deploy</span></span><br></pre></td></tr></table></figure>
 
 </div>
 

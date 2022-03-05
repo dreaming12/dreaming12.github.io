@@ -125,9 +125,42 @@ function sidebar_toggle() {
         <div class="book-content">
           <div class="book-post">
   <h1 id="FTP">FTP</h1>
-<p>hexo-server</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$ </span><span class="language-bash">npm install hexo-server --save</span></span><br></pre></td></tr></table></figure>
-<p>When the server is running, Hexo will watch for file changes and update automatically so it’s not necessary to manually restart the server.</p>
+<h2 id="HOW-TO-BUILD">HOW TO BUILD</h2>
+<blockquote>
+<p>Ubuntu 20.04</p>
+<p><a target="_blank" rel="noopener" href="https://security.appspot.com/vsftpd.html#about">vsftpd</a> ~ <a target="_blank" rel="noopener" href="https://security.appspot.com/vsftpd/vsftpd_conf.html">Doc</a></p>
+<p>由于不是 <code>root</code> 用户，需要使用命令 <code>sudo</code></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$ </span><span class="language-bash">sudo install vsftpd</span></span><br><span class="line"><span class="meta">$ </span><span class="language-bash">sudo systemctl <span class="built_in">enable</span> vsftpd <span class="comment"># 开机自启</span></span></span><br><span class="line"><span class="meta">$ </span><span class="language-bash">sudo systemctl start vsftpd <span class="comment"># 启动服务</span></span></span><br><span class="line"><span class="meta">$ </span><span class="language-bash">sudo netstat -antup | grep ftp <span class="comment"># 确认服务是否启动</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$ </span><span class="language-bash">sudo useradd hello <span class="comment"># 为 FTP 服务创建一个用户 hello</span></span></span><br><span class="line"><span class="meta">$ </span><span class="language-bash">sudo passwd hello <span class="comment"># 设置用户的密码</span></span></span><br><span class="line"><span class="meta">$ </span><span class="language-bash">sudo <span class="built_in">mkdir</span> /home/hello</span></span><br><span class="line"><span class="meta">$ </span><span class="language-bash">sudo <span class="built_in">chown</span> -R hello:hello /home/hello <span class="comment"># 修改目录权限</span></span></span><br></pre></td></tr></table></figure>
+<p>由于大多数客户端机器的防火墙设置及无法获取真实 IP 等原因，建议选择被动模式搭建 FTP 服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$ </span><span class="language-bash">sudo vim /etc/vsftpd.conf <span class="comment"># 修改配置文件</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 取消注释</span><br><span class="line">listen=YES</span><br><span class="line">anonymous_enable=NO</span><br><span class="line">write_enable=YES</span><br><span class="line">local_enable=YES</span><br><span class="line">chroot_local_user=YES</span><br><span class="line">chroot_list_enable=YES</span><br><span class="line">chroot_list_file=/etc/vsftpd.chroot_list</span><br><span class="line"></span><br><span class="line"># 添加注释</span><br><span class="line"># listen_ipv6=YES</span><br><span class="line"></span><br><span class="line"># 添加配置</span><br><span class="line">local_root=/home/hello</span><br><span class="line">allow_writeable_chroot=YES</span><br><span class="line">pasv_enable=YES</span><br><span class="line">pasv_address=xxx.xx.xxx.xx # 服务器公网 IP</span><br><span class="line">pasv_min_port=40000 # 可修改</span><br><span class="line">pasv_max_port=45000</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># </span><span class="language-bash">输入用户名，一个用户名占据一行，设置的用户将不会被锁定在主目录</span></span><br><span class="line"><span class="meta">$ </span><span class="language-bash">sudo vim /etc/vsftpd.chroot_list</span> </span><br><span class="line"><span class="meta">$ </span><span class="language-bash">sudo systemctl restart vsftpd</span></span><br></pre></td></tr></table></figure>
+<p>设置安全组，开放对应端口（21 &amp; 40000-45000）</p>
+<h2 id="PROBLEMS">PROBLEMS</h2>
+<p>❗ 没有安全方面的配置</p>
+<p>❗ <code>500 Illegal PORT command&quot; using command-line ftp</code></p>
+<p>Linux command-line ftp defaults to using active-mode FTP. Try switching to passive mode with the <code>pass</code> command.</p>
+<p>🎉</p>
+<h2 id="COMMANDS">COMMANDS</h2>
+<pre><code class="language-shell">$ ftp [ip]
+
+$ ftp
+ftp&gt; open [ip]
+
+ftp&gt; ? # help
+ftp&gt; help [command]
+
+ftp&gt; ! # escape to the shell
+# you can use command exit to go back to ftp
+
+ftp&gt; get [filename]
+
+ftp&gt; put [filename]
+
+ftp&gt; bye # quit
+</code></pre>
 
 </div>
 
