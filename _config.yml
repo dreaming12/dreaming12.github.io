@@ -81,7 +81,7 @@ theme_mode: # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: https://raw.githubusercontent.com/dreaming12/blog-img/main/images/wkwk%EF%BC%88%E5%97%B7%E5%B0%8F%E6%B3%BD%EF%BC%89%20-%2094702183_p0.jpg
 
 # boolean type, the global switch for ToC in posts.
 toc: true
