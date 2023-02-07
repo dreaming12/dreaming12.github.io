@@ -2,6 +2,8 @@
 layout: post
 title: Hello World!
 date: 2023-02-06 23:36 +0800
+categories: [Hello]
+tags: [Hello World]
 ---
 
 ```c
