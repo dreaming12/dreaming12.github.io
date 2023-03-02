@@ -20,7 +20,7 @@ timezone:
 
 title: Daydreaming # the main title
 
-tagline: Hello World # it will display as the sub-title
+tagline: 应该写些什么好呢 # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   Write some to record my learning path.
