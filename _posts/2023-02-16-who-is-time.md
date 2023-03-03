@@ -8,6 +8,6 @@ tags: [Game]
 
 Who is Maru?
 
-![](https://raw.githubusercontent.com/dreaming12/blog-img/main/images/3bdf6be4ce10c72d1db6f2d6865eac019717562.jpg%25401139w.webp)
+![](https://raw.githubusercontent.com/dreaming12/blog-img/main/images/time.jpg)
 
 🎉🎉🎉🎉🎉🎉
